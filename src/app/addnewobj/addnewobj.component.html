@@ -2,23 +2,22 @@
     <h1>Добавить новый объект для бронирования</h1>
     {{diagnostic}}
     {{(submitted == true) ? '1':'0'}}
-    <form (ngSubmit)="onSubmit()" #newObjForm="ngForm">
+    <form [formGroup]="myform">
 
       <div class="form-group">
         <label for="name">Название</label>
         <input type="text"
-        name="name"
+        formControlName="name"
         class="form-control"
-        id="name"
-        [(ngModel)]="model.name"
-        required>
-        TODO: remove this: {{model.name}}
+        id="name" >
+
       </div>
 
 
       <div class="form-group">
           <label for="type">Тип</label>
-          <select  [(ngModel)]="model.type" name="type" class="form-control" id="type" required>
+          <select
+          formControlName="type" name="type" class="form-control" id="type" required>
             <option *ngFor="let t of types" [value]="t">{{t}}</option>
           </select>
       </div>
@@ -28,7 +27,8 @@
       <div class="form-group">
 
             <label for="country">Страна</label>
-            <select  [(ngModel)]="adress.country" name="country" class="form-control" id="country"
+            <select
+            formControlName='country'  class="form-control" id="country"
             required>
               <option *ngFor="let c of contry" [value]="c">{{c}}</option>
             </select>
@@ -38,43 +38,82 @@
 
 
 
-          <div  *ngIf=' adress.country == "Беларусь"' class="form-group" >
-
+          <div   class="form-group" >
+              <fieldset formGroupName="adress">
                           <label for="regions">Облать</label>
-                          <select  [(ngModel)]="adress.regions" class="form-control" name="regions" id="regions"
-                          (ngModelChange)='checkIndex($event)'
+                          <select
+                          formControlName='regions'  class="form-control"  id="regions"
+                          (ngModelChange)="checkRegion($event)"
                           required>
                             <option *ngFor="let a of adresses; let i = index" [value]="a.name">{{a.name}} {{i}}</option>
                           </select>
 
-                          <div *ngIf='areaDiv' class="form-group">
+                          <div  *ngIf='areaDiv'  class="form-group">
                           <label for="areas">Район</label>
-                          <select  [(ngModel)]="adress.areas" class="form-control" name="areas" id="areas" required>
+                          <select  formControlName='area' class="form-control"  id="areas" required>
+
                             <option *ngFor="let a of adresses[areaIndex].areas" [value]="a">{{a}}</option>
                           </select>
 
 
 
-                                <label for="place">Населенный пункт</label>
-                                <input
-                                name="place"
-                                type="text"
-                                class="form-control"
-                                [(ngModel)]="adress.place"
-                                id="place">
+                          <label for="place">Населенный пункт</label>
+                          <input
 
-
+                          type="text"
+                          class="form-control"
+                          formControlName='place'
+                          id="place">
                           </div>
+            </fieldset>
+      </div>
+
+<form [formGroup]="orderForm">
+      <div formGroupName="items"
+        *ngFor="let item of orderForm.get('items').controls; let i = index;">
+        <div [formGroupName]="i">
+          <input formControlName="name" placeholder="Item name">
+          <input formControlName="description" placeholder="Item description">
+          <input formControlName="price" placeholder="Item price">
+        </div>
+
+        Chosen name: {{ orderForm.controls.items.controls[i].controls.name.value }}
+      </div>
+      <button (click)='addItem()'> ADD</button>
+</form>
 
 
 
+<!--
+        <div   class="form-group" >
+        <fieldset formGroupName="rooms">
+          <label for="title">Название номера</label>
+          <input
+
+          type="text"
+          class="form-control"
+          formControlName='title'
+          id="title">
 
 
+          <label for="canLive">Возможное проживание</label>
+          <input
+          type="text"
+          class="form-control"
+          formControlName='canLive'
+          id="canLive">
 
 
-          </div>
+          <label for="price">Цена</label>
+          <input
 
-
+          type="text"
+          class="form-control"
+          formControlName='price'
+          id="price">
+        </fieldset>
+      </div>
+-->
       <button type="submit"  class="btn btn-default" (click)="setNewObject()">Внести</button>
-
+<pre>{{myform.value | json}}</pre>
     </form>
