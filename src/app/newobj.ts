@@ -21,20 +21,13 @@ export class Address {
 
 }
 
-// тип рассчета ночи или дни внести в основную форму
-
-//варианты цен по возрастам, хранение ВОЗРАСТОВ
-
-
 export class Rooms {
 
-//t = ''
-// добавленеи комнат цен на них учесть градация детей по расчету
+
 constructor(public title: string,
             public canLive: string,
             public price: number){
 
-            //  this.t = title
             }
 
 }

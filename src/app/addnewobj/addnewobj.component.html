@@ -1,119 +1,53 @@
 
-    <h1>Добавить новый объект для бронирования</h1>
-    {{diagnostic}}
-    {{(submitted == true) ? '1':'0'}}
-    <form [formGroup]="myform">
-
-      <div class="form-group">
-        <label for="name">Название</label>
-        <input type="text"
-        formControlName="name"
-        class="form-control"
-        id="name" >
-
-      </div>
-
-
-      <div class="form-group">
-          <label for="type">Тип</label>
-          <select
-          formControlName="type" name="type" class="form-control" id="type" required>
-            <option *ngFor="let t of types" [value]="t">{{t}}</option>
-          </select>
-      </div>
+<form [formGroup]="form">
 
 
 
-      <div class="form-group">
+    <div formGroupName="main">
+      <input formControlName="title" name="title" placeholder="title">
+      <input formControlName="type" name="type" placeholder="type">
+    </div>
 
-            <label for="country">Страна</label>
-            <select
-            formControlName='country'  class="form-control" id="country"
-            required>
-              <option *ngFor="let c of contry" [value]="c">{{c}}</option>
-            </select>
+    <div formGroupName="adress">
+      <input formControlName="country" name="country" placeholder="title">
+      <input formControlName="region" name="region" placeholder="type">
+      <input formControlName="area" name="area" placeholder="title">
+      <input formControlName="place" name="place" placeholder="type">
+    </div>
 
-      </div>
+    <input type="text" formControlName="priceType" name="priceType" placeholder="priceType">
 
+    <div formGroupName="rooms">
+      <input formControlName="roomname" name="roomname" placeholder="roomname">
 
+            <div formGroupName="price">
+              <input formControlName="adult" name="adult" placeholder="adult">
+              <input formControlName="children" name="children" placeholder="children">
+            </div>
 
+          <div formGroupName="accommodation">
+            <input formControlName="valid" name="valid" placeholder="valid">
 
-          <div   class="form-group" >
-              <fieldset formGroupName="adress">
-                          <label for="regions">Облать</label>
-                          <select
-                          formControlName='regions'  class="form-control"  id="regions"
-                          (ngModelChange)="checkRegion($event)"
-                          required>
-                            <option *ngFor="let a of adresses; let i = index" [value]="a.name">{{a.name}} {{i}}</option>
-                          </select>
-
-                          <div  *ngIf='areaDiv'  class="form-group">
-                          <label for="areas">Район</label>
-                          <select  formControlName='area' class="form-control"  id="areas" required>
-
-                            <option *ngFor="let a of adresses[areaIndex].areas" [value]="a">{{a}}</option>
-                          </select>
+          </div>
 
 
 
-                          <label for="place">Населенный пункт</label>
-                          <input
-
-                          type="text"
-                          class="form-control"
-                          formControlName='place'
-                          id="place">
-                          </div>
-            </fieldset>
-      </div>
-
-<form [formGroup]="orderForm">
-      <div formGroupName="items"
-        *ngFor="let item of orderForm.get('items').controls; let i = index;">
-        <div [formGroupName]="i">
-          <input formControlName="name" placeholder="Item name">
-          <input formControlName="description" placeholder="Item description">
-          <input formControlName="price" placeholder="Item price">
-        </div>
-
-        Chosen name: {{ orderForm.controls.items.controls[i].controls.name.value }}
-      </div>
-      <button (click)='addItem()'> ADD</button>
-</form>
+    </div>
 
 
 
-<!--
-        <div   class="form-group" >
-        <fieldset formGroupName="rooms">
-          <label for="title">Название номера</label>
-          <input
-
-          type="text"
-          class="form-control"
-          formControlName='title'
-          id="title">
 
 
-          <label for="canLive">Возможное проживание</label>
-          <input
-          type="text"
-          class="form-control"
-          formControlName='canLive'
-          id="canLive">
 
 
-          <label for="price">Цена</label>
-          <input
 
-          type="text"
-          class="form-control"
-          formControlName='price'
-          id="price">
-        </fieldset>
-      </div>
--->
-      <button type="submit"  class="btn btn-default" (click)="setNewObject()">Внести</button>
-<pre>{{myform.value | json}}</pre>
-    </form>
+
+
+
+
+
+    <button>Submit</button>
+  </form>
+
+  <p>Value: {{ form.value | json }}</p>
+  <p>Validation status: {{ form.status }}</p>
