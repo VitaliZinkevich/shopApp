@@ -3,8 +3,27 @@ export class Newobj {
   public main: Main;
   public address: Address;
   public priceType: string = '';
+  public childrenRange: ChildrenRange[];
   public rooms: Rooms[];
+  public description: Description[];
+  public medDescription: Description[];
 
+// extra options
+
+}
+
+
+export class ChildrenRange {
+
+from = ''
+to = ''
+
+}
+
+export class Description {
+
+feature: string = '';
+description: string = '';
 
 }
 
@@ -25,8 +44,8 @@ export class Address {
 }
 
 export class Price {
-  adult = 0;
-  children = 0
+  groupPrice = 0;
+
 }
 
 export class Accommodation {
@@ -36,9 +55,12 @@ valid = '';
 
 export class Rooms {
   roomname: string = '';
-  priceAdult: number = 0;
-  priceChildren: number = 0
-  accommodation = []
+  rangePrice:Price[] ;
+  accommodation = [];
+
+// extra options
+
+
 
 constructor(){}
 
@@ -90,3 +112,6 @@ export const adressOption = [ {country: 'Беларусь',
 export const accommodation = [['1'],['1+1'],['1+2'],['2'],['2+1'],['2+2'],['2+3'],['3']]
 
 export const TYPES = ['Санаторий', 'Оздаровительный центр'];
+
+export const objFeatures = ['Бассейн', 'Озеро', 'Баня','Прокат']
+export const objMedFeatures = ['Кожные', 'Кордеолог', 'Костные','Еще другие']

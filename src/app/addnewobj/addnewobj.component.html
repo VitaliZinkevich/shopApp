@@ -1,4 +1,4 @@
-
+<hr>
 <form [formGroup]="form">
 
 
@@ -47,43 +47,121 @@
       <option  value='Дни'>Дни </option>
 
   </select>
+<hr>
+<!-- childrenRange -->
 
 
+<div formArrayName="childrenRange">
+
+      <div *ngFor="let cR of childrenRange.controls; let i=index" [formGroupName]="i">
+
+        <input formControlName="from" name="from" placeholder="Возраст с ">
+        <input formControlName="to" name="to" placeholder="Восраст по">
+
+
+        <br>
+        <br>
+        </div>
+
+  <button (click)='addChildrenRange()'> Добавить возраста для расчета стоимости детей</button>
+
+</div>
+
+
+
+
+
+<!-- end childrenRange -->
+
+
+<!-- Rooms -->
+<hr>
     <div formArrayName="rooms">
 
           <div *ngFor="let room of rooms.controls; let i=index" [formGroupName]="i">
 
             <input formControlName="roomname" name="roomname" placeholder="Название номера">
 
+            <div *ngFor='let inp of childrenRange.controls; let i = index' >
 
-            <input formControlName="priceAdult" name="priceAdult" placeholder="Цена за взрослого">
-            <input formControlName="priceChildren" name="priceChildren" placeholder="Цена за ребенка">
+            <input formControlName="groupPrice" name="rangePrice" placeholder="Цена за возрастную гуппу">
 
-            <select formControlName="accommodation" name="accommodation" multiple>
-              <option *ngFor='let ac of acc' [value]='ac'> {{ac}}</option>
-            </select>
 
             </div>
 
 
-          </div>
+            <select formControlName="accommodation" name="accommodation" multiple>
+              <option *ngFor='let ac of acc' [value]='ac'> {{ac}}</option>
+            </select>
+            <br>
+            <br>
+            </div>
 
 
-
-  <button (click)='addRoom()'> addRoom</button>
-
+    </div>
 
 
+  <button (click)='addRoom()'> Добавить номер</button>
+<hr>
+<!-- end Rooms -->
+
+<!-- description -->
+
+<div formArrayName="description">
+
+      <div *ngFor="let descr of description.controls; let i=index" [formGroupName]="i">
 
 
+        <select formControlName="feature" name="feature" >
+          <option  [selected]='true'>Выберете из вариантов</option>
+          <option *ngFor='let f of objFeatures' [value]='f'> {{f}}</option>
+        </select>
 
 
+        <textarea formControlName="description" name="description" placeholder="Описание"></textarea>
+        <br>
+        <br>
+        </div>
+
+  <button (click)='addDescription()'>Добавить элемент описания объекта</button>
+</div>
+
+<hr>
+<!-- end description -->
+
+<!-- medDescription -->
+<div formArrayName="medDescription">
+
+      <div *ngFor="let medDescr of medDescription.controls; let i=index" [formGroupName]="i">
 
 
+        <select formControlName="feature" name="feature">
+          <option  [selected]='true'>Выберете из вариантов</option>
+          <option *ngFor='let f of objMedFeatures' [value]='f'> {{f}}</option>
+        </select>
 
 
-    <button>Submit</button>
+        <textarea formControlName="description" name="description" placeholder="Описание"></textarea>
+        <br>
+        <br>
+        </div>
+
+  <button (click)='addMedDescription()'>Добавить элемент MEД описания объекта</button>
+</div>
+<!-- medDescription -->
+
+<hr>
+<!-- Upload common FOTOS -->
+<input type="file" (change)="fileChange($event)" placeholder="Загрузить фото объекта" accept=".pdf,.doc,.docx">
+<!-- end Upload common FOTOS -->
+
+
+<hr>
+
+    <button class="btn">Добавить объект</button>
   </form>
+
+  <hr>
 
   <p>Value: {{ form.value | json }}</p>
   <p>Validation status: {{ form.status }}</p>
