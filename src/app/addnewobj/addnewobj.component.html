@@ -4,37 +4,73 @@
 
 
     <div formGroupName="main">
-      <input formControlName="title" name="title" placeholder="title">
-      <input formControlName="type" name="type" placeholder="type">
+      <input formControlName="title" name="title" placeholder="Название">
+      <select formControlName="type" name="type" autofocus>
+        <option value="1" [selected]='true'>Тип объекта</option>
+        <option *ngFor='let t of type' [value]='t'> {{t}}</option>
+      </select>
+
     </div>
 
     <div formGroupName="adress">
-      <input formControlName="country" name="country" placeholder="title">
-      <input formControlName="region" name="region" placeholder="type">
-      <input formControlName="area" name="area" placeholder="title">
-      <input formControlName="place" name="place" placeholder="type">
+      <select formControlName="country" name="country"
+      (ngModelChange)="checkCountry($event)">
+        <option [selected]='true'>Страна</option>
+        <option *ngFor='let al of adressList' [value]='al.country'> {{al.country}}</option>
+      </select>
+
+
+        <select *ngIf='countrySelected' formControlName="region" name="region"
+        (ngModelChange)="checkRegion($event)">
+
+          <option  [selected]='true'>Область</option>
+          <option *ngFor='let reg of adressList[countryIndex].regions' [value]='reg.region'> {{reg.region}}</option>
+
+      </select>
+
+      <select *ngIf='regionSelected' formControlName="region" name="region">
+
+        <option  [selected]='true'>Район</option>
+        <option *ngFor='let area of adressList[countryIndex].regions[regionIndex].areas' [value]='area'> {{area}}</option>
+
+    </select>
+
+
+
+      <input *ngIf='regionSelected' formControlName="place" name="place" placeholder="Населенный пункт">
     </div>
 
-    <input type="text" formControlName="priceType" name="priceType" placeholder="priceType">
+    <select formControlName="priceType" name="priceType">
 
-    <div formGroupName="rooms">
-      <input formControlName="roomname" name="roomname" placeholder="roomname">
+      <option  [selected]='true'>Тип расчета</option>
+      <option  value='Ночи'>Ночи </option>
+      <option  value='Дни'>Дни </option>
 
-            <div formGroupName="price">
-              <input formControlName="adult" name="adult" placeholder="adult">
-              <input formControlName="children" name="children" placeholder="children">
+  </select>
+
+
+    <div formArrayName="rooms">
+
+          <div *ngFor="let room of rooms.controls; let i=index" [formGroupName]="i">
+
+            <input formControlName="roomname" name="roomname" placeholder="Название номера">
+
+
+            <input formControlName="priceAdult" name="priceAdult" placeholder="Цена за взрослого">
+            <input formControlName="priceChildren" name="priceChildren" placeholder="Цена за ребенка">
+
+            <select formControlName="accommodation" name="accommodation" multiple>
+              <option *ngFor='let ac of acc' [value]='ac'> {{ac}}</option>
+            </select>
+
             </div>
 
-          <div formGroupName="accommodation">
-            <input formControlName="valid" name="valid" placeholder="valid">
 
           </div>
 
 
 
-    </div>
-
-
+  <button (click)='addRoom()'> addRoom</button>
 
 
 
