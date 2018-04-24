@@ -74,7 +74,9 @@
 <!-- end childrenRange -->
 
 
-<!-- Rooms -->
+<!-- Rooms
+
+-->
 <hr>
     <div formArrayName="rooms">
 
@@ -82,9 +84,9 @@
 
             <input formControlName="roomname" name="roomname" placeholder="Название номера">
 
-            <div *ngFor='let inp of childrenRange.controls; let i = index' >
+            <div   >
 
-            <input formControlName="groupPrice" name="rangePrice" placeholder="Цена за возрастную гуппу">
+            <input formControlName="rangePrice" name="rangePrice" placeholder="Цена за возрастную группу">
 
 
             </div>
@@ -163,5 +165,4 @@
 
   <hr>
 
-  <p>Value: {{ form.value | json }}</p>
-  <p>Validation status: {{ form.status }}</p>
+<pre>{{ form.value | json }}<pre>

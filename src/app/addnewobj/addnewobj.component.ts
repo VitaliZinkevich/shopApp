@@ -52,12 +52,21 @@ constructor(private  fb: FormBuilder) {
 
 ngOnInit() {}
 
+
+
+
 get rooms(): FormArray {
   return this.form.get('rooms') as FormArray;
 };
 
 addRoom() {
+/*
+  console.log (this.form.get('childrenRange').length) // works
+  let priceRanges = this.form.get('childrenRange').value // works
+*/
+
   this.rooms.push(this.fb.group(new Rooms ()));
+
 }
 
 

@@ -44,7 +44,7 @@ export class Address {
 }
 
 export class Price {
-  groupPrice = 0;
+  groupPrice:number = 0 ;
 
 }
 
@@ -55,14 +55,11 @@ valid = '';
 
 export class Rooms {
   roomname: string = '';
-  rangePrice:Price[] ;
+  rangePrice = '';
   accommodation = [];
+constructor( ){
 
-// extra options
-
-
-
-constructor(){}
+}
 
 }
 
