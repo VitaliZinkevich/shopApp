@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Newobj, Main, Price, Accommodation, Address, Rooms,  adressOption, TYPES, accommodation, objFeatures, Description, objMedFeatures, ChildrenRange} from '../newobj'
+import { Newobj, Main, /*Price,*/ Accommodation, Address, Rooms,  adressOption, TYPES, accommodation, objFeatures, Description, objMedFeatures, ChildrenRange} from '../newobj'
 import {FormBuilder, FormGroup, Validators, FormArray} from '@angular/forms';
+
+import { AddService } from '../add.service'
 
 @Component({
   selector: 'app-addnewobj',
@@ -23,7 +25,8 @@ regionIndex = 0
 regionSelected = false
 
 
-constructor(private  fb: FormBuilder) {
+constructor(private  fb: FormBuilder,
+            private add: AddService) {
   this.form = fb.group({
        main: fb.group({
          title: ['', Validators.required],
@@ -121,29 +124,9 @@ checkRegion(event){
   this.regionSelected = true
 
 }
-/*
-fileChange(event) {
-    let fileList: FileList = event.target.files;
-    if(fileList.length > 0) {
-        let file: File = fileList[0];
-        let formData:FormData = new FormData();
-        formData.append('uploadFile', file, file.name);
-        let headers = new Headers();
-        /** In Angular 5, including the header Content-Type can invalidate your request */
-        /*
-        headers.append('Content-Type', 'multipart/form-data');
-        headers.append('Accept', 'application/json');
-        let options = new RequestOptions({ headers: headers });
-        this.http.post(`${this.apiEndPoint}`, formData, options)
-            .map(res => res.json())
-            .catch(error => Observable.throw(error))
-            .subscribe(
-                data => console.log('success'),
-                error => console.log(error)
-            )
-    }
-}
-*/
 
+addNewBookingObject (){
+return this.add.addBookingObject ()
+}
 
 }

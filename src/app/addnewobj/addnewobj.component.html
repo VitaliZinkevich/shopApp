@@ -28,7 +28,7 @@
 
       </select>
 
-      <select *ngIf='regionSelected' formControlName="region" name="region">
+      <select *ngIf='regionSelected' formControlName="area" name="region">
 
         <option  [selected]='true'>Район</option>
         <option *ngFor='let area of adressList[countryIndex].regions[regionIndex].areas' [value]='area'> {{area}}</option>
@@ -74,9 +74,7 @@
 <!-- end childrenRange -->
 
 
-<!-- Rooms
-
--->
+<!-- Rooms -->
 <hr>
     <div formArrayName="rooms">
 
@@ -84,10 +82,10 @@
 
             <input formControlName="roomname" name="roomname" placeholder="Название номера">
 
-            <div   >
+            <div>
 
-            <input formControlName="rangePrice" name="rangePrice" placeholder="Цена за возрастную группу">
-
+            <input formControlName="adultPrice" name="adultPrice" placeholder="Цена за взрослого">
+            <input formControlName="childrenPrice" name="childrenPrice" placeholder="Цена за ребенка">
 
             </div>
 
@@ -153,14 +151,10 @@
 <!-- medDescription -->
 
 <hr>
-<!-- Upload common FOTOS -->
-<input type="file" (change)="fileChange($event)" placeholder="Загрузить фото объекта" accept=".pdf,.doc,.docx">
-<!-- end Upload common FOTOS -->
 
-
-<hr>
-
-    <button class="btn">Добавить объект</button>
+    <button
+    (click)='addNewBookingObject()'
+    class="btn btn-primary">Добавить объект</button>
   </form>
 
   <hr>

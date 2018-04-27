@@ -42,11 +42,12 @@ export class Address {
   place : string='';
 
 }
-
+/*
 export class Price {
   groupPrice:number = 0 ;
 
 }
+*/
 
 export class Accommodation {
 valid = '';
@@ -55,7 +56,8 @@ valid = '';
 
 export class Rooms {
   roomname: string = '';
-  rangePrice = '';
+  adultPrice = '';
+  childrenPrice = '';
   accommodation = [];
 constructor( ){
 
