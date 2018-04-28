@@ -1,0 +1,41 @@
+<form [formGroup]="searchForm">
+
+  <input
+  formControlName="title"
+  type="text" name="title" value="" placeholder="title">
+
+  <input
+  formControlName="type"
+  type="text" name="type" value="" placeholder="type">
+
+  <input
+  formControlName="country"
+  type="text" name="country" value="" placeholder="country">
+
+  <input
+  formControlName="region"
+  type="text" name="region" value="" placeholder="region">
+
+  <input
+  formControlName="adult"
+  placeholder="adult"
+  type="text" name="adult" value="">
+
+  <input
+  formControlName="children"
+  placeholder="children"
+  type="text" name="children" value="">
+
+  <input
+  formControlName="dateCheckIn"
+  placeholder="dateCheckIn"
+  type="date" name="dateCheckIn" value="">
+
+  <input
+  formControlName="dateCheckOut"
+  placeholder="dateCheckOut"
+  type="date" name="dateCheckOut" value="">
+
+</form>
+
+<pre>{{ searchForm.value | json }}</pre>

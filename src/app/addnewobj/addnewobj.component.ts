@@ -126,7 +126,9 @@ checkRegion(event){
 }
 
 addNewBookingObject (){
-return this.add.addBookingObject ()
+  let formData = this.form.value
+
+  this.add.addBookingObject (formData).subscribe ((data)=> {console.log (data)})
 }
 
 }
