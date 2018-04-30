@@ -8,7 +8,7 @@ import { Newobj, Main, /*Price,*/ Accommodation, Address, Rooms,  adressOption, 
 interface bringSearchDataStatus{
   status: Boolean,
   message: String,
-  data:[]<Newobj>,
+  //data:[]<Newobj>,
 }
 
 
