@@ -1,41 +1,94 @@
-<form [formGroup]="searchForm">
 
-  <input
-  formControlName="title"
-  type="text" name="title" value="" placeholder="title">
+<div class="row">
 
-  <input
-  formControlName="type"
-  type="text" name="type" value="" placeholder="type">
+  <div class="col-12">
 
-  <input
-  formControlName="country"
-  type="text" name="country" value="" placeholder="country">
+    <form [formGroup]="searchForm">
 
-  <input
-  formControlName="region"
-  type="text" name="region" value="" placeholder="region">
+      <input
+      formControlName="title"
+      type="text" name="title" value="" placeholder="title">
 
-  <input
-  formControlName="adult"
-  placeholder="adult"
-  type="text" name="adult" value="">
 
-  <input
-  formControlName="children"
-  placeholder="children"
-  type="text" name="children" value="">
+    <br>
 
-  <input
-  formControlName="dateCheckIn"
-  placeholder="dateCheckIn"
-  type="date" name="dateCheckIn" value="">
+    <select formControlName="type" name="type" autofocus>
+      <option value="1" [selected]='true'>Тип объекта</option>
+      <option *ngFor='let t of type' [value]='t'> {{t}}</option>
+    </select>
 
-  <input
-  formControlName="dateCheckOut"
-  placeholder="dateCheckOut"
-  type="date" name="dateCheckOut" value="">
 
-</form>
+    <hr>
 
-<pre>{{ searchForm.value | json }}</pre>
+    <select formControlName="country" name="country"
+    (ngModelChange)="checkCountry($event)">
+      <option [selected]='true'>Страна</option>
+      <option *ngFor='let al of adressList' [value]='al.country'> {{al.country}}</option>
+    </select>
+
+
+    <select *ngIf='countrySelected' formControlName="region" name="region"
+    >
+
+      <option  [selected]='true'>Область</option>
+      <option *ngFor='let reg of adressList[countryIndex].regions' [value]='reg.region'> {{reg.region}}</option>
+
+    </select>
+
+
+    <hr>
+      <input
+      formControlName="adult"
+      placeholder="adult"
+      type="text" name="adult" value=""><br>
+
+      <input
+      formControlName="children"
+      placeholder="children"
+      type="text" name="children" value=""><br>
+    <hr>
+      <input
+      formControlName="dateCheckIn"
+      placeholder="dateCheckIn"
+      type="date" name="dateCheckIn" value=""><br>
+
+      <input
+      formControlName="dateCheckOut"
+      placeholder="dateCheckOut"
+      type="date" name="dateCheckOut" value=""><br>
+
+
+    <button type="button" name="button" (click)='startSearch()'>Найти</button>
+    </form>
+
+    <pre>{{ searchForm.value | json }}</pre>
+
+
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+
+        <div *ngFor='let o of forDisplay; let i = index'
+        class="">
+
+        <div class="">
+          {{o.title}}
+        </div>
+
+        <div class=""
+        *ngFor='let r of forDisplay[i].rooms'>
+          {{r.roomname}}
+          {{r.adultPrice}}
+          {{r.childrenPrice}}
+        </div>
+
+
+      </div>
+
+
+
+      </div>
+  </div>

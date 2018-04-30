@@ -5,7 +5,10 @@ import { HttpHeaders } from '@angular/common/http';
 interface insertStatus{
   status: Boolean,
   message: String
+
 }
+
+
 
 @Injectable()
 export class AddService {

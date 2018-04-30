@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AddnewobjComponent } from './addnewobj/addnewobj.component';
 
 import { AddService } from './add.service';
+import { SearchService } from './search.service';
 import { SearchComponent } from './search/search.component';
 
 @NgModule({
@@ -34,6 +35,7 @@ import { SearchComponent } from './search/search.component';
   ],
   providers: [
     AddService,
+    SearchService,
   ],
   bootstrap: [AppComponent]
 })
