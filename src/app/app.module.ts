@@ -8,13 +8,16 @@ import { AddnewobjComponent } from './addnewobj/addnewobj.component';
 
 import { AddService } from './add.service';
 import { SearchService } from './search.service';
+import { BookService } from './book.service'
 import { SearchComponent } from './search/search.component';
+import { CommisionPipe } from './commision.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddnewobjComponent,
-    SearchComponent
+    SearchComponent,
+    CommisionPipe
   ],
   imports: [
     BrowserModule,
@@ -36,6 +39,7 @@ import { SearchComponent } from './search/search.component';
   providers: [
     AddService,
     SearchService,
+    BookService,
   ],
   bootstrap: [AppComponent]
 })

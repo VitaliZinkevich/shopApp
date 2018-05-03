@@ -73,19 +73,37 @@
 
         <div *ngFor='let o of forDisplay; let i = index'
         class="">
-
+<hr>
         <div class="">
           {{o.title}}
+          {{o.type}}
+        </div>
+
+        <div class="">
+      С {{searchForm.get('dateCheckIn').value | date: 'short'}}
+      ПО  {{searchForm.get('dateCheckOut').value}}
+      ДНЕЙ {{'days'}}
+        </div>
+        <div class="">
+          <span>состав </span>
+           <span>взрослых {{searchForm.get('adult').value}}</span>
+           <span>детей {{searchForm.get('children').value}}</span>
         </div>
 
         <div class=""
-        *ngFor='let r of forDisplay[i].rooms'>
+        *ngFor='let r of forDisplay[i].rooms; let indx = index'>
+
           {{r.roomname}}
-          {{r.adultPrice}}
-          {{r.childrenPrice}}
+          {{r.adultPrice + r.childrenPrice  }}
+
+          <button (click)='bookOne(i, indx)'>Забронировать</button>
         </div>
 
 
+
+
+
+<hr>
       </div>
 
 

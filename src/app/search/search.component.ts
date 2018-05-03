@@ -60,5 +60,27 @@ showBokings = false;
 
   }
 
+  bookOne (i, indx){
+console.log (i, indx)
+
+console.log (this.forDisplay[i].rooms[indx])
+
+let children = this.searchForm.get('children').value
+let adult = this.searchForm.get('adult').value
+let dateCheckIn =  this.searchForm.get('dateCheckIn').value
+let dateCheckOut =  this.searchForm.get('dateCheckOut').value
+
+let oneDay = 24*60*60*1000;
+
+//var count: any = Math.floor ((Math.abs(new Date(dateCheckOut) - new Date (dateCheckIn)))/oneDay)
+/*
+let nights = count
+console.log (nights)
+let days = nights+1
+*/
+//console.log (dateCheckIn, children) works
+
+  }
+
 
 }

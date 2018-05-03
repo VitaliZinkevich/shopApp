@@ -56,8 +56,8 @@ valid = '';
 
 export class Rooms {
   roomname: string = '';
-  adultPrice = '';
-  childrenPrice = '';
+  adultPrice:number = 0;
+  childrenPrice:number = 0;
   accommodation = [];
 constructor( ){
 
