@@ -16,7 +16,7 @@ adressList=adressOption;
 countryIndex:number;
 countrySelected : boolean = false;
 
-forDisplay:[]=[];
+forDisplay:any;
 showBokings = false;
 
   constructor( private  fb: FormBuilder,

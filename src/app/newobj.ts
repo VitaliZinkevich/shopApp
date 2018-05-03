@@ -242,7 +242,7 @@ export const adressOption = [ {country: 'Беларусь',
 
 
 
-export const accommodation = [['1'],['1+1'],['1+2'],['2'],['2+1'],['2+2'],['2+3'],['3']]
+export const accommodation = ['1','1+1','1+2','2','2+1','2+2','2+3','3']
 
 export const TYPES = ['Санаторий', 'Оздаровительный центр'];
 
