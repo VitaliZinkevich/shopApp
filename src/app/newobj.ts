@@ -15,8 +15,8 @@ export class Newobj {
 
 export class ChildrenRange {
 
-from = ''
-to = ''
+from: number = 0;
+to: number = 0
 
 }
 
@@ -42,6 +42,8 @@ export class Address {
   place : string='';
 
 }
+
+
 /*
 export class Price {
   groupPrice:number = 0 ;

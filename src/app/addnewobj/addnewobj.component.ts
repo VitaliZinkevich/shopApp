@@ -16,7 +16,7 @@ acc = accommodation;
 type = TYPES;
 adressList = adressOption;
 objFeatures = objFeatures;
-objMedFeatures = objMedFeatures
+objMedFeatures = objMedFeatures;
 
 countryIndex : number = 0;
 countrySelected = false;
@@ -67,6 +67,9 @@ addRoom() {
   console.log (this.form.get('childrenRange').length) // works
   let priceRanges = this.form.get('childrenRange').value // works
 */
+
+
+
 
   this.rooms.push(this.fb.group(new Rooms ()));
 

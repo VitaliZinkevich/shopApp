@@ -19,6 +19,10 @@ countrySelected : boolean = false;
 forDisplay:any;
 showBokings = false;
 
+days: number;
+nights: number;
+
+
   constructor( private  fb: FormBuilder,
                 private search: SearchService) {
 
@@ -48,8 +52,20 @@ showBokings = false;
         this.showBokings = true
 
 
+        // dates days nights
+        let dateCheckIn =  this.searchForm.get('dateCheckIn').value
+        let dateCheckOut =  this.searchForm.get('dateCheckOut').value
+        let inD = new Date (dateCheckIn).getTime ()
+        let outD = new Date (dateCheckOut).getTime ()
+        let oneDay = 24*60*60*1000;
+
+        this.nights = (outD - inD) / oneDay
+        this.days = this.nights+1
+
 
      })
+
+
   }
 
   checkCountry(event){
@@ -61,24 +77,19 @@ showBokings = false;
   }
 
   bookOne (i, indx){
-console.log (i, indx)
 
+// selected room
 console.log (this.forDisplay[i].rooms[indx])
-
+// detalis
 let children = this.searchForm.get('children').value
 let adult = this.searchForm.get('adult').value
-let dateCheckIn =  this.searchForm.get('dateCheckIn').value
-let dateCheckOut =  this.searchForm.get('dateCheckOut').value
 
-let oneDay = 24*60*60*1000;
 
-//var count: any = Math.floor ((Math.abs(new Date(dateCheckOut) - new Date (dateCheckIn)))/oneDay)
-/*
-let nights = count
-console.log (nights)
-let days = nights+1
-*/
-//console.log (dateCheckIn, children) works
+
+
+
+
+
 
   }
 

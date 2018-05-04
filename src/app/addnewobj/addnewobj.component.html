@@ -55,8 +55,8 @@
 
       <div *ngFor="let cR of childrenRange.controls; let i=index" [formGroupName]="i">
 
-        <input formControlName="from" name="from" placeholder="Возраст с ">
-        <input formControlName="to" name="to" placeholder="Восраст по">
+        <input formControlName="from" name="from" placeholder="Возраст с " type="number">
+        <input formControlName="to" name="to" placeholder="Восраст по" type="number">
 
 
         <br>
@@ -78,14 +78,14 @@
 <hr>
     <div formArrayName="rooms">
 
-          <div *ngFor="let room of rooms.controls; let i=index" [formGroupName]="i">
+          <div *ngFor="let room of rooms.controls; let i=index" [formGroupName]="i" appFilledForm >
 
-            <input formControlName="roomname" name="roomname" placeholder="Название номера">
+            <input formControlName="roomname" name="roomname" placeholder="Название номера" >
 
             <div>
 
-            <input formControlName="adultPrice" name="adultPrice" placeholder="Цена за взрослого">
-            <input formControlName="childrenPrice" name="childrenPrice" placeholder="Цена за ребенка">
+            <input formControlName="adultPrice" name="adultPrice" placeholder="Цена за взрослого" type="number">
+            <input formControlName="childrenPrice" name="childrenPrice" placeholder="Цена за ребенка" type="number">
 
             </div>
 

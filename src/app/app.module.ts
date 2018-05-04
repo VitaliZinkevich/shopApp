@@ -11,13 +11,15 @@ import { SearchService } from './search.service';
 import { BookService } from './book.service'
 import { SearchComponent } from './search/search.component';
 import { CommisionPipe } from './commision.pipe';
+import { FilledFormDirective } from './filled-form.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddnewobjComponent,
     SearchComponent,
-    CommisionPipe
+    CommisionPipe,
+    FilledFormDirective
   ],
   imports: [
     BrowserModule,

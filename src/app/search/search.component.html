@@ -82,19 +82,20 @@
         <div class="">
       С {{searchForm.get('dateCheckIn').value | date: 'short'}}
       ПО  {{searchForm.get('dateCheckOut').value}}
-      ДНЕЙ {{'days'}}
+      ДНЕЙ {{days}} Ночей {{nights}}
         </div>
+
         <div class="">
           <span>состав </span>
            <span>взрослых {{searchForm.get('adult').value}}</span>
-           <span>детей {{searchForm.get('children').value}}</span>
+           <span>детей {{(searchForm.get('children').value == "") ? 0: searchForm.get('children').value}}</span>
         </div>
 
         <div class=""
         *ngFor='let r of forDisplay[i].rooms; let indx = index'>
 
           {{r.roomname}}
-          {{r.adultPrice + r.childrenPrice  }}
+          {{(r.adultPrice * days ) + (r.childrenPrice * days) | commision}}
 
           <button (click)='bookOne(i, indx)'>Забронировать</button>
         </div>
