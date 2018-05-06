@@ -1,15 +1,21 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, AfterViewInit, ViewChildren,QueryList, ElementRef } from '@angular/core';
 import { Newobj, Main, /*Price,*/ Accommodation, Address, Rooms,  adressOption, TYPES, accommodation, objFeatures, Description, objMedFeatures, ChildrenRange} from '../newobj'
 import {FormBuilder, FormGroup, Validators, FormArray} from '@angular/forms';
 
 import { AddService } from '../add.service'
+
+interface privateDomValues {
+    _result:any;
+}
 
 @Component({
   selector: 'app-addnewobj',
   templateUrl: './addnewobj.component.html',
   styleUrls: ['./addnewobj.component.css']
 })
-export class AddnewobjComponent implements OnInit {
+export class AddnewobjComponent implements AfterViewInit {
+@ViewChildren('childerRanges') agesElem : QueryList<any>;
+@ViewChildren('roomsAtObject') roomsElem: QueryList<any>;
 
 form: FormGroup;
 acc = accommodation;
@@ -53,7 +59,11 @@ constructor(private  fb: FormBuilder,
 
 
 
-ngOnInit() {}
+ngAfterViewInit () {
+
+
+
+}
 
 
 
@@ -63,17 +73,19 @@ get rooms(): FormArray {
 };
 
 addRoom() {
-/*
-  console.log (this.form.get('childrenRange').length) // works
-  let priceRanges = this.form.get('childrenRange').value // works
-*/
+
 
 
 
 
   this.rooms.push(this.fb.group(new Rooms ()));
+  console.log (this.roomsElem)
+  this.roomsElem._results.forEach (e=>{
+    e.nativeElement.disabled = true
+  })
 
 }
+
 
 
 
@@ -97,7 +109,17 @@ get childrenRange(): FormArray {
 };
 
 addChildrenRange() {
+
   this.childrenRange.push(this.fb.group(new ChildrenRange ()));
+  let inp = this.agesElem._results
+  inp.forEach (e=>{
+    e.nativeElement.disabled = true
+  })
+/*
+  if (this.childrenRange.length > 1) {
+    let inputs = this.agesElem.querySelector ('input')
+    console.log (inputs)
+  }*/
 }
 
 

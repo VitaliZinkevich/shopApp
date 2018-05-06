@@ -9,7 +9,7 @@ import { BookService } from "../book.service";
 })
 export class BookObjectComponent implements OnInit {
 
-test: any = ' change me'
+test: any = 'TOURIST DETAILES FORM + recived data about booking'
 
 
   constructor(private book: BookService) { }

@@ -51,12 +51,12 @@
 <!-- childrenRange -->
 
 
-<div formArrayName="childrenRange">
+<div  formArrayName="childrenRange">
 
-      <div *ngFor="let cR of childrenRange.controls; let i=index" [formGroupName]="i">
+      <div  *ngFor="let cR of childrenRange.controls; let i=index" [formGroupName]="i">
 
-        <input formControlName="from" name="from" placeholder="Возраст с " type="number">
-        <input formControlName="to" name="to" placeholder="Восраст по" type="number">
+        <input #childerRanges formControlName="from" name="from" placeholder="Возраст с " type="number">
+        <input #childerRanges formControlName="to" name="to" placeholder="Восраст по" type="number">
 
 
         <br>
@@ -76,21 +76,21 @@
 
 <!-- Rooms -->
 <hr>
-    <div formArrayName="rooms">
+    <div  formArrayName="rooms">
 
           <div *ngFor="let room of rooms.controls; let i=index" [formGroupName]="i" appFilledForm >
 
-            <input formControlName="roomname" name="roomname" placeholder="Название номера" >
+            <input  #roomsAtObject formControlName="roomname" name="roomname" placeholder="Название номера" >
 
             <div>
 
-            <input formControlName="adultPrice" name="adultPrice" placeholder="Цена за взрослого" type="number">
-            <input formControlName="childrenPrice" name="childrenPrice" placeholder="Цена за ребенка" type="number">
+            <input  #roomsAtObject formControlName="adultPrice" name="adultPrice" placeholder="Цена за взрослого" type="number">
+            <input  #roomsAtObject formControlName="childrenPrice" name="childrenPrice" placeholder="Цена за ребенка" type="number">
 
             </div>
 
 
-            <select formControlName="accommodation" name="accommodation" multiple>
+            <select  #roomsAtObject formControlName="accommodation" name="accommodation" multiple>
               <option *ngFor='let ac of acc' [value]='ac'> {{ac}}</option>
             </select>
             <br>
