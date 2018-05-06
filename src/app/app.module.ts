@@ -12,6 +12,7 @@ import { BookService } from './book.service'
 import { SearchComponent } from './search/search.component';
 import { CommisionPipe } from './commision.pipe';
 import { FilledFormDirective } from './filled-form.directive';
+import { BookObjectComponent } from './book-object/book-object.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FilledFormDirective } from './filled-form.directive';
     AddnewobjComponent,
     SearchComponent,
     CommisionPipe,
-    FilledFormDirective
+    FilledFormDirective,
+    BookObjectComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,10 @@ import { FilledFormDirective } from './filled-form.directive';
         path:'add',
         component:AddnewobjComponent
         },
+        {
+          path:'booking',
+          component: BookObjectComponent
+        }
 
     ]),
     HttpClientModule,

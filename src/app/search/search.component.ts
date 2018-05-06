@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormArray} from '@angular/forms';
 import { Newobj, Main, /*Price,*/ Accommodation, Address, Rooms,  adressOption, TYPES, accommodation, objFeatures, Description, objMedFeatures, ChildrenRange} from '../newobj'
 import  { SearchService } from "../search.service";
+import { BookService } from "../book.service";
+import {Router} from '@angular/router'
+
 
 @Component({
   selector: 'app-search',
@@ -24,7 +27,10 @@ nights: number;
 
 
   constructor( private  fb: FormBuilder,
-                private search: SearchService) {
+                private search: SearchService,
+                private router: Router,
+                private book: BookService,
+              ) {
 
     this.searchForm = fb.group({
       title: ['', Validators.required],
@@ -76,19 +82,22 @@ nights: number;
 
   }
 
-  bookOne (i, indx){
+
+
+bookOne (i, indx){
 
 // selected room
-console.log (this.forDisplay[i].rooms[indx])
+console.log ()
 // detalis
 let children = this.searchForm.get('children').value
 let adult = this.searchForm.get('adult').value
 
+let dateCheckIn =  this.searchForm.get('dateCheckIn').value
+let dateCheckOut =  this.searchForm.get('dateCheckOut').value
 
-
-
-
-
+this.book.bookingData (this.forDisplay[i].title, this.forDisplay[i].rooms[indx], children, adult,dateCheckIn,dateCheckOut,
+this.nights)
+this.router.navigate(['booking'])
 
 
   }
