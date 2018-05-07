@@ -72,19 +72,60 @@ get rooms(): FormArray {
   return this.form.get('rooms') as FormArray;
 };
 
+
+
+
+
 addRoom() {
 
 
 
+let range = this.fb.group({
+
+price: 0
+
+})
 
 
-  this.rooms.push(this.fb.group(new Rooms ()));
-  console.log (this.roomsElem)
+
+
+
+  this.rooms.push(this.fb.group({
+    roomname:  '',
+    adultPrice: '',
+    childrenPrice: [],//this.fb.array ([]),
+    accommodation : '' ,
+
+
+
+
+  }));
+/*  console.log (this.roomsElem)
   this.roomsElem._results.forEach (e=>{
     e.nativeElement.disabled = true
-  })
+  })*/
 
 }
+
+
+
+  get childrenPrice(): FormArray {
+    return this.form.get('childrenPrice') as FormArray;
+  }
+
+  addChildrenPrice (){
+//console.log (this.childrenRange.length)
+
+//console.log (this.form.get('childrenPrice').value)
+/*
+  this.childrenPrice.push (this.fb.group({
+      price:  ''})
+
+  )
+*/
+}
+
+
 
 
 
@@ -110,11 +151,14 @@ get childrenRange(): FormArray {
 
 addChildrenRange() {
 
+
+
   this.childrenRange.push(this.fb.group(new ChildrenRange ()));
-  let inp = this.agesElem._results
+
+  /*let inp = this.agesElem._results
   inp.forEach (e=>{
     e.nativeElement.disabled = true
-  })
+  })*/
 /*
   if (this.childrenRange.length > 1) {
     let inputs = this.agesElem.querySelector ('input')

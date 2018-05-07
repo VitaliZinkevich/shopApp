@@ -15,8 +15,8 @@ export class Newobj {
 
 export class ChildrenRange {
 
-from: number = 0;
-to: number = 0
+from: number ;
+to: number
 
 }
 
@@ -58,8 +58,8 @@ valid = '';
 
 export class Rooms {
   roomname: string = '';
-  adultPrice:number = 0;
-  childrenPrice:number = 0;
+  adultPrice:number;
+  childrenPrice:number;
   accommodation = [];
 constructor( ){
 

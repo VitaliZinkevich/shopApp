@@ -48,6 +48,7 @@
 
   </select>
 <hr>
+
 <!-- childrenRange -->
 
 
@@ -76,6 +77,7 @@
 
 <!-- Rooms -->
 <hr>
+<button type="button" name="button" (click)='addChildrenPrice()'>тест</button>
     <div  formArrayName="rooms">
 
           <div *ngFor="let room of rooms.controls; let i=index" [formGroupName]="i" appFilledForm >
@@ -85,7 +87,20 @@
             <div>
 
             <input  #roomsAtObject formControlName="adultPrice" name="adultPrice" placeholder="Цена за взрослого" type="number">
+            <!--
+            <div class="" formArrayName="childrenPrice">
+              <div *ngFor="let p of childrenPrice.controls; let i=index" [formGroupName]="i">
+
+                <input  formControlName="price" name="price" placeholder="Цена за ребенка" type="number">
+
+              </div>
+            </div>
+            *ngFor='let count of form.childrenRange.controls.length; let i = index'
+          -->
+          <div  class="">
             <input  #roomsAtObject formControlName="childrenPrice" name="childrenPrice" placeholder="Цена за ребенка" type="number">
+          </div>
+
 
             </div>
 

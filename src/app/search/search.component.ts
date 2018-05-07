@@ -39,14 +39,68 @@ nights: number;
       region: '',
       adult: '',
       children:'',
+      childerAges:fb.array ([]),
       dateCheckIn: '',
       dateCheckOut:''
       });
+
+
+
+
 
      }
 
   ngOnInit() {
   }
+
+  get childerAges(): FormArray {
+    return this.searchForm.get('childerAges') as FormArray;
+  }
+
+  addChilderAges() {
+
+
+if (this.searchForm.get('children').value == '') {
+
+console.log (this.childerAges.controls.length)
+
+let i = this.childerAges.controls.length
+while (i > -1 ) {
+this.childerAges.removeAt(i)
+  i--
+  console.log (this.childerAges.controls.length)
+}
+
+
+
+
+
+
+
+
+//this.childerAges.splice (0, this.childerAges.length)
+
+  //console.log ('notthing')
+
+
+} else {
+
+  let childrenCount = this.searchForm.get('children').value
+
+for (var i = 0; i<childrenCount;i++) {
+
+  this.childerAges.push(this.fb.group({
+    age: '',
+  }));
+
+}
+
+
+}
+
+}
+
+
 
   startSearch (){
     let serchData = this.searchForm.value

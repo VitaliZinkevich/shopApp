@@ -45,7 +45,24 @@
       <input
       formControlName="children"
       placeholder="children"
-      type="text" name="children" value=""><br>
+      type="text" name="children" value=""
+      (blur)="addChilderAges()"
+
+
+      ><br>
+
+
+      <div class="" formArrayName="childerAges">
+        <div *ngFor="let c of childerAges.controls; let i=index" [formGroupName]="i">
+            <p>Лет ребенку {{i+1}}</p>
+            <input formControlName="age" type="text" name="" value="">
+        </div>
+
+
+      </div>
+
+
+
     <hr>
       <input
       formControlName="dateCheckIn"
