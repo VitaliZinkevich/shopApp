@@ -15,8 +15,8 @@ export class Newobj {
 
 export class ChildrenRange {
 
-from: number ;
-to: number
+from: number = 0   ;
+to: number = 0
 
 }
 
@@ -44,12 +44,12 @@ export class Address {
 }
 
 
-/*
+
 export class Price {
   groupPrice:number = 0 ;
 
 }
-*/
+
 
 export class Accommodation {
 valid = '';

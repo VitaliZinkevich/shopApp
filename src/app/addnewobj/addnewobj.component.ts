@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, AfterViewInit, ViewChildren,QueryList, ElementRef } from '@angular/core';
-import { Newobj, Main, /*Price,*/ Accommodation, Address, Rooms,  adressOption, TYPES, accommodation, objFeatures, Description, objMedFeatures, ChildrenRange} from '../newobj'
+import { Newobj, Main, Price, Accommodation, Address, Rooms,  adressOption, TYPES, accommodation, objFeatures, Description, objMedFeatures, ChildrenRange} from '../newobj'
 import {FormBuilder, FormGroup, Validators, FormArray} from '@angular/forms';
 
 import { AddService } from '../add.service'
@@ -30,6 +30,7 @@ countrySelected = false;
 regionIndex = 0
 regionSelected = false
 
+childrenPrice: any = [[],[],[]]
 
 constructor(private  fb: FormBuilder,
             private add: AddService) {
@@ -93,7 +94,7 @@ price: 0
   this.rooms.push(this.fb.group({
     roomname:  '',
     adultPrice: '',
-    childrenPrice: [],//this.fb.array ([]),
+    childrenPrice: '',//this.fb.array ([]),
     accommodation : '' ,
 
 
@@ -108,13 +109,14 @@ price: 0
 }
 
 
-
+/*
   get childrenPrice(): FormArray {
     return this.form.get('childrenPrice') as FormArray;
   }
-
+*/
+/*
   addChildrenPrice (){
-//console.log (this.childrenRange.length)
+
 
 //console.log (this.form.get('childrenPrice').value)
 /*
@@ -122,8 +124,8 @@ price: 0
       price:  ''})
 
   )
-*/
-}
+
+}*/
 
 
 
@@ -156,6 +158,7 @@ addChildrenRange() {
   this.childrenRange.push(this.fb.group(new ChildrenRange ()));
 
   /*let inp = this.agesElem._results
+
   inp.forEach (e=>{
     e.nativeElement.disabled = true
   })*/

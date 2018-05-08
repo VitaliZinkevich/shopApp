@@ -56,12 +56,12 @@
 
       <div  *ngFor="let cR of childrenRange.controls; let i=index" [formGroupName]="i">
 
-        <input #childerRanges formControlName="from" name="from" placeholder="Возраст с " type="number">
-        <input #childerRanges formControlName="to" name="to" placeholder="Восраст по" type="number">
+        <input  formControlName="from" name="from" placeholder="Возраст с " type="number">
+        <input  formControlName="to" name="to" placeholder="Восраст по" type="number">
 
 
         <br>
-        <br>
+
         </div>
 
   <button (click)='addChildrenRange()'> Добавить возраста для расчета стоимости детей</button>
@@ -87,20 +87,25 @@
             <div>
 
             <input  #roomsAtObject formControlName="adultPrice" name="adultPrice" placeholder="Цена за взрослого" type="number">
-            <!--
-            <div class="" formArrayName="childrenPrice">
-              <div *ngFor="let p of childrenPrice.controls; let i=index" [formGroupName]="i">
 
-                <input  formControlName="price" name="price" placeholder="Цена за ребенка" type="number">
+            <div class="">
+
+              <div>
+
+                <input   formControlName="childrenPrice" name="price" placeholder="Цена за ребенка" type="number">
+
 
               </div>
+
             </div>
-            *ngFor='let count of form.childrenRange.controls.length; let i = index'
-          -->
+
+
+
+          <!--
           <div  class="">
             <input  #roomsAtObject formControlName="childrenPrice" name="childrenPrice" placeholder="Цена за ребенка" type="number">
           </div>
-
+        -->
 
             </div>
 
