@@ -20,6 +20,106 @@
 
     <hr>
 
+
+<!-- ul список-->
+
+
+  <div class="">
+
+    <div>
+      <input formControlName='minskRegion' type="checkbox" > Минск <ul>
+
+        <div class="" >
+
+          <div  *ngFor='let r of setUpData; let i = index;'  class="">
+
+            <div class="" >
+              <li> <input (click)='nameSelect(i)' type="checkbox" > {{r.name}}</li> <!-- хочет дать контроллер когда размноает-->
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+      </ul>
+    </div>
+
+    <div>
+      <input formControlName='vitebskRegion' type="checkbox" > Витебск<ul>
+
+            <div *ngIf='searchForm.get("vitebskRegion").value' class="">
+              <li> <input type="checkbox" name="" value=""> test</li>
+            </div>
+
+      </ul>
+    </div>
+
+    <div>
+      <input formControlName='gomelRegion' type="checkbox" > Гомель<ul>
+
+            <div  *ngIf='searchForm.get("gomelRegion").value' class="">
+              <li> <input type="checkbox" name="" value=""> test</li>
+            </div>
+
+      </ul>
+    </div>
+
+
+    <div>
+      <input formControlName='grodnoRegion' type="checkbox" > Гродно<ul>
+
+            <div *ngIf='searchForm.get("grodnoRegion").value' class="">
+              <li> <input type="checkbox" name="" value=""> test</li>
+            </div>
+
+      </ul>
+    </div>
+
+
+    <div>
+      <input formControlName='mogilevRegion' type="checkbox" > Могилев<ul>
+
+            <div  *ngIf='searchForm.get("mogilevRegion").value' class="">
+              <li> <input type="checkbox" name="" value=""> test</li>
+            </div>
+
+      </ul>
+    </div>
+
+
+
+
+      <div class="">
+
+
+        <input formControlName='brestRegion' type="checkbox" > Брест<ul>
+
+            <div  *ngIf='searchForm.get("brestRegion").value' class="">
+              <li> <input type="checkbox" name="" value=""> test</li>
+            </div>
+
+      </ul>
+      </div>
+
+
+  </div>
+
+
+
+
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+
+
+
+
+
+<!--
     <select formControlName="country" name="country"
     (ngModelChange)="checkCountry($event)">
       <option [selected]='true'>Страна</option>
@@ -34,7 +134,7 @@
       <option *ngFor='let reg of adressList[countryIndex].regions' [value]='reg.region'> {{reg.region}}</option>
 
     </select>
-
+-->
 
     <hr>
       <input

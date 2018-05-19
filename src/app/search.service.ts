@@ -34,4 +34,11 @@ export class SearchService {
 
   }
 
+
+  getSetUpData(){
+
+      return this.http.get ('/api/forsearchprimarydata')
+
+  }
+
 }

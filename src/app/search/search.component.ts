@@ -12,6 +12,16 @@ import {Router} from '@angular/router'
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+
+regions = [{area: 'Минская облать', formname: 'minskRegion'},
+          {area: 'Витебская область', formname: 'vitebskRegion'},
+          {area: 'Гомельская область',formname: 'gomelRegion'},
+          {area :'Гродненская область',formname: 'grodnoRegion'},
+          {area: 'Брестская область',formname: 'mogilevRegion'},
+          {area: 'Могилевская область',formname: 'brestRegion'}];
+
+setUpData:any
+
 searchForm: FormGroup;
 type= TYPES;
 adressList=adressOption;
@@ -35,8 +45,22 @@ nights: number;
     this.searchForm = fb.group({
       title: ['', Validators.required],
       type: '',
-      country: '',
-      region: '',
+
+      minskRegion: '',
+      minskRegionLi: fb.array ([{name:''}]),
+      vitebskRegion : '',
+      vitebskRegionLi: fb.array ([]),
+      gomelRegion: '',
+      gomelRegionLi: fb.array ([]),
+      grodnoRegion: '',
+      grodnoRegionLi: fb.array ([]),
+      mogilevRegion:'',
+      mogilevRegionLi: fb.array ([]),
+      brestRegion:'',
+      brestRegionLi:fb.array ([]),
+
+
+
       adult: '',
       children:'',
       childerAges:fb.array ([]),
@@ -46,18 +70,48 @@ nights: number;
 
 
 
+/*
+ li serch by obj TYPES
+
+ li search by name
+ li serch by li prop
+
+ checkbox ul data from фобоасть с фронта и растусуем при получении базы данных с сервера
+ checkbox li -название отеля
+*/
 
 
      }
 
   ngOnInit() {
+
+    // запрос на заполнение объектов по областямы
+    this.search.getSetUpData().subscribe ((data)=>{
+    console.log (data)
+    this.setUpData = data
+
+  })
+
   }
 
   get childerAges(): FormArray {
     return this.searchForm.get('childerAges') as FormArray;
   }
 
-  addChilderAges() {
+  get minskRegionLi(): FormArray {
+    return this.form.get('minskRegionLi') as FormArray;
+  };
+
+
+nameSelect(i) {console.log (i)}
+
+
+
+
+
+
+/*
+addChilderAges() {
 
 
 if (this.searchForm.get('children').value == '') {
@@ -99,7 +153,7 @@ for (var i = 0; i<childrenCount;i++) {
 }
 
 }
-
+*/
 
 
   startSearch (){
