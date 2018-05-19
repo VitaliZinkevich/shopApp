@@ -6,6 +6,7 @@
     <form [formGroup]="searchForm">
 
       <input
+
       formControlName="title"
       type="text" name="title" value="" placeholder="title">
 
@@ -23,18 +24,25 @@
 
 <!-- ul список-->
 
+<!--
+
+
+
+
+-->
+
 
   <div class="">
 
     <div>
       <input formControlName='minskRegion' type="checkbox" > Минск <ul>
 
-        <div class="" >
+        <div class="" *ngIf='searchForm.get("minskRegion").value'>
 
           <div  *ngFor='let r of setUpData; let i = index;'  class="">
 
             <div class="" >
-              <li> <input (click)='nameSelect(i)' type="checkbox" > {{r.name}}</li> <!-- хочет дать контроллер когда размноает-->
+              <li> <input (click)='nameSelect(i, "minskRegion")' type="checkbox" > {{r.name}}</li>
             </div>
 
           </div>

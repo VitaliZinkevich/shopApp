@@ -5,6 +5,12 @@ import  { SearchService } from "../search.service";
 import { BookService } from "../book.service";
 import {Router} from '@angular/router'
 
+class setUpData  {
+
+name:string;
+region:string
+
+}
 
 @Component({
   selector: 'app-search',
@@ -20,7 +26,7 @@ regions = [{area: 'Минская облать', formname: 'minskRegion'},
           {area: 'Брестская область',formname: 'mogilevRegion'},
           {area: 'Могилевская область',formname: 'brestRegion'}];
 
-setUpData:any
+setUpData = {}
 
 searchForm: FormGroup;
 type= TYPES;
@@ -46,7 +52,7 @@ nights: number;
       title: ['', Validators.required],
       type: '',
 
-      minskRegion: '',
+      minskRegion: false,
       minskRegionLi: fb.array ([{name:''}]),
       vitebskRegion : '',
       vitebskRegionLi: fb.array ([]),
@@ -90,6 +96,12 @@ nights: number;
     console.log (data)
     this.setUpData = data
 
+/*
+    if (data.region == 'minskRegion') {this.setUpData.minskRegion.push (data)
+    console.log (setUpData)}*/
+
+
+
   })
 
   }
@@ -98,13 +110,16 @@ nights: number;
     return this.searchForm.get('childerAges') as FormArray;
   }
 
-  get minskRegionLi(): FormArray {
-    return this.form.get('minskRegionLi') as FormArray;
-  };
+/*s  get minskRegionLi(): FormArray {
+    return this.searchForm.get('minskRegionLi') as FormArray;
+  };*/
 
 
-nameSelect(i) {
-  console.log (i)}
+nameSelect(i, reg) {
+
+
+
+  console.log (i, reg)}
 
 
 
