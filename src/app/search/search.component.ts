@@ -103,7 +103,8 @@ nights: number;
   };
 
 
-nameSelect(i) {console.log (i)}
+nameSelect(i) {
+  console.log (i)}
 
 
 
