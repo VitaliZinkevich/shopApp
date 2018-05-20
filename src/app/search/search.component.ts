@@ -5,12 +5,7 @@ import  { SearchService } from "../search.service";
 import { BookService } from "../book.service";
 import {Router} from '@angular/router'
 
-class setUpData  {
 
-name:string;
-region:string
-
-}
 
 @Component({
   selector: 'app-search',
@@ -26,7 +21,11 @@ regions = [{area: 'Минская облать', formname: 'minskRegion'},
           {area: 'Брестская область',formname: 'mogilevRegion'},
           {area: 'Могилевская область',formname: 'brestRegion'}];
 
-setUpData = {}
+setUpData = {minskRegion:[], brestRegion:[],gomelRegion:[],grodnoRegion: [], mogilevRegion:[],vitebskRegion:[]}
+selectedObjs=[]
+titleSearch = ''
+deletedBySearh=[]
+
 
 searchForm: FormGroup;
 type= TYPES;
@@ -93,8 +92,72 @@ nights: number;
 
     // запрос на заполнение объектов по областямы
     this.search.getSetUpData().subscribe ((data)=>{
-    console.log (data)
-    this.setUpData = data
+    console.log (data.length)
+
+
+    for (let i = 0; i < data.length; i++) {
+
+
+        if (data[i].region == 'Брестская область'){
+          this.setUpData.brestRegion.push(data[i])
+          }
+
+          if (data[i].region == 'Минская область'){
+            this.setUpData.minskRegion.push(data[i])
+          }
+
+          if (data[i].region == 'Витебская область'){
+            this.setUpData.vitebskRegion.push(data[i])
+          }
+
+          if (data[i].region == 'Гомельская область'){
+            this.setUpData.gomelRegion.push(data[i])
+          }
+
+          if (data[i].region == 'Могилевская область'){
+            this.setUpData.mogilevRegion.push(data[i])
+          }
+
+          if (data[i].region == 'Гродненская область'){
+            this.setUpData.grodnoRegion.push(data[i])
+          }
+
+    }
+
+    console.log (this.setUpData)
+
+
+/*
+    data.each (el, index) {
+
+      console.log (el)
+
+    }*/
+
+
+
+/*
+    for (let i = 0; i < data.length; i++) {
+        console.log (data.region)
+    }*/
+
+
+/*
+    while (data.length!=0) {
+      let tmp  = data.splice(0,1).toString()
+      if (tmp.region == "Брестская область") {
+
+        this.setUpData.brestRegion.push(tmp)
+      }
+
+      if (tmp.region == "Минская область") {
+
+        this.setUpData.minskRegion.push(tmp)
+      }
+    }
+*/
+
+
 
 /*
     if (data.region == 'minskRegion') {this.setUpData.minskRegion.push (data)
@@ -104,6 +167,7 @@ nights: number;
 
   })
 
+  this.onChanges()
   }
 
   get childerAges(): FormArray {
@@ -115,11 +179,75 @@ nights: number;
   };*/
 
 
+  onChanges(): void {
+  this.searchForm.get('title').valueChanges.subscribe(val => {
+    this.makeTitleSearch ();
+  });
+
+}
+
+
+makeTitleSearch (){
+  console.log (this.searchForm.get('title').value)
+
+  this.searchForm.get ('minskRegion').setValue (true)
+
+
+
+
+  /*
+  for (let i = 0; i < setUpData.length; i++) {
+
+    if (setUpData[i].name.includes(this.searchForm.get('title').value) == true ){
+
+      // есть в названии
+    } else {
+
+    this.deletedBySearh =
+    this.setUpData.splice ()
+
+    }
+
+
+  }
+*/
+
+
+}
+
 nameSelect(i, reg) {
 
+console.log (this.setUpData[reg][i])
 
 
-  console.log (i, reg)}
+console.log (this.selectedObjs.indexOf (this.setUpData[reg][i]) )
+
+  //this.selectedObjs.push (this.setUpData[reg][i])
+
+if (this.selectedObjs.indexOf (this.setUpData[reg][i]) == -1 ){
+
+  console.log ('ADD')
+
+  this.selectedObjs.push (this.setUpData[reg][i])
+  //this.selectedObjs[].splice ( ,1)
+} else {
+  console.log ('DEL')
+  let elem = this.selectedObjs.indexOf (this.setUpData[reg][i])
+  this.selectedObjs.splice (elem, 1)
+}
+
+/*
+if (this.selectedObjs.indexOf (this.setUpData[reg][i] != -1) {
+
+  this.selectedObjs.splice (this.selectedObjs.indexOf (this.setUpData[reg][i], 1)
+
+} else {
+  this.selectedObjs.push (this.setUpData[reg][i])
+}
+*/
+console.log (this.selectedObjs)
+
+}
 
 
 

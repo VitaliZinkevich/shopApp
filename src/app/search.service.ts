@@ -11,6 +11,13 @@ interface bringSearchDataStatus{
   data:any,
 }
 
+interface setUpData  {
+
+name:string,
+region:string
+
+}
+
 
 
 @Injectable()
@@ -37,7 +44,7 @@ export class SearchService {
 
   getSetUpData(){
 
-      return this.http.get ('/api/forsearchprimarydata')
+      return this.http.get<setUpData> ('/api/forsearchprimarydata')
 
   }
 

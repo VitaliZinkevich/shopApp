@@ -35,11 +35,11 @@
   <div class="">
 
     <div>
-      <input formControlName='minskRegion' type="checkbox" > Минск <ul>
+      <input formControlName='minskRegion' type="checkbox" > Минская область {{setUpData.minskRegion.length}}<ul>
 
         <div class="" *ngIf='searchForm.get("minskRegion").value'>
 
-          <div  *ngFor='let r of setUpData; let i = index;'  class="">
+          <div  *ngFor='let r of setUpData.minskRegion; let i = index;'  class="">
 
             <div class="" >
               <li> <input (click)='nameSelect(i, "minskRegion")' type="checkbox" > {{r.name}}</li>
@@ -48,12 +48,33 @@
           </div>
 
         </div>
-
-
-
       </ul>
     </div>
 
+
+
+
+    <div>
+      <input formControlName='vitebskRegion' type="checkbox" > Витебская область {{setUpData.vitebskRegion.length}}<ul>
+
+        <div class="" *ngIf='searchForm.get("vitebskRegion").value'>
+
+          <div  *ngFor='let r of setUpData.vitebskRegion; let i = index;'  class="">
+
+            <div class="" >
+              <li> <input (click)='nameSelect(i, "vitebskRegion")' type="checkbox" > {{r.name}}</li>
+            </div>
+
+          </div>
+
+        </div>
+      </ul>
+    </div>
+
+
+
+
+<!--
     <div>
       <input formControlName='vitebskRegion' type="checkbox" > Витебск<ul>
 
@@ -63,7 +84,30 @@
 
       </ul>
     </div>
+-->
 
+
+    <div>
+      <input formControlName='gomelRegion' type="checkbox" > Гомельская область {{setUpData.gomelRegion.length}}<ul>
+
+        <div class="" *ngIf='searchForm.get("gomelRegion").value'>
+
+          <div  *ngFor='let r of setUpData.gomelRegion; let i = index;'  class="">
+
+            <div class="" >
+              <li> <input (click)='nameSelect(i, "gomelRegion")' type="checkbox" > {{r.name}}</li>
+            </div>
+
+          </div>
+
+        </div>
+      </ul>
+    </div>
+
+
+
+
+<!--
     <div>
       <input formControlName='gomelRegion' type="checkbox" > Гомель<ul>
 
@@ -73,8 +117,29 @@
 
       </ul>
     </div>
+-->
+    <div>
+      <input formControlName='grodnoRegion' type="checkbox" > Гродненская область {{setUpData.grodnoRegion.length}}<ul>
+
+        <div class="" *ngIf='searchForm.get("grodnoRegion").value'>
+
+          <div  *ngFor='let r of setUpData.grodnoRegion; let i = index;'  class="">
+
+            <div class="" >
+              <li> <input (click)='nameSelect(i, "grodnoRegion")' type="checkbox" > {{r.name}}</li>
+            </div>
+
+          </div>
+
+        </div>
+      </ul>
+    </div>
 
 
+
+
+
+<!--
     <div>
       <input formControlName='grodnoRegion' type="checkbox" > Гродно<ul>
 
@@ -84,8 +149,28 @@
 
       </ul>
     </div>
+-->
+
+    <div>
+      <input formControlName='mogilevRegion' type="checkbox" > Могилевская область {{setUpData.mogilevRegion.length}}<ul>
+
+        <div class="" *ngIf='searchForm.get("mogilevRegion").value'>
+
+          <div  *ngFor='let r of setUpData.mogilevRegion; let i = index;'  class="">
+
+            <div class="" >
+              <li> <input (click)='nameSelect(i, "mogilevRegion")' type="checkbox" > {{r.name}}</li>
+            </div>
+
+          </div>
+
+        </div>
+      </ul>
+    </div>
 
 
+
+<!--
     <div>
       <input formControlName='mogilevRegion' type="checkbox" > Могилев<ul>
 
@@ -96,9 +181,28 @@
       </ul>
     </div>
 
+-->
 
 
 
+    <div>
+      <input formControlName='brestRegion' type="checkbox" > Брестская область {{setUpData.brestRegion.length}}<ul>
+
+        <div class="" *ngIf='searchForm.get("brestRegion").value'>
+
+          <div  *ngFor='let r of setUpData.brestRegion; let i = index;'  class="">
+
+            <div class="" >
+              <li> <input (click)='nameSelect(i, "brestRegion")' type="checkbox" > {{r.name}}</li>
+            </div>
+
+          </div>
+
+        </div>
+      </ul>
+    </div>
+
+<!--
       <div class="">
 
 
@@ -110,7 +214,7 @@
 
       </ul>
       </div>
-
+-->
 
   </div>
 
