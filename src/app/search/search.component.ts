@@ -22,12 +22,15 @@ regions = [{area: 'Минская облать', formname: 'minskRegion'},
           {area: 'Могилевская область',formname: 'brestRegion'}];
 
 setUpData = {minskRegion:[], brestRegion:[],gomelRegion:[],grodnoRegion: [], mogilevRegion:[],vitebskRegion:[]}
+
 selectedObjs=[]
 titleSearch = ''
-deletedBySearh=[]
+deletedSearh= {minskRegion:[], brestRegion:[],gomelRegion:[],grodnoRegion: [], mogilevRegion:[],vitebskRegion:[]}
 
 
 searchForm: FormGroup;
+
+
 type= TYPES;
 adressList=adressOption;
 
@@ -92,7 +95,7 @@ nights: number;
 
     // запрос на заполнение объектов по областямы
     this.search.getSetUpData().subscribe ((data)=>{
-    console.log (data.length)
+    //console.log (data.length)
 
 
     for (let i = 0; i < data.length; i++) {
@@ -124,48 +127,7 @@ nights: number;
 
     }
 
-    console.log (this.setUpData)
-
-
-/*
-    data.each (el, index) {
-
-      console.log (el)
-
-    }*/
-
-
-
-/*
-    for (let i = 0; i < data.length; i++) {
-        console.log (data.region)
-    }*/
-
-
-/*
-    while (data.length!=0) {
-      let tmp  = data.splice(0,1).toString()
-      if (tmp.region == "Брестская область") {
-
-        this.setUpData.brestRegion.push(tmp)
-      }
-
-      if (tmp.region == "Минская область") {
-
-        this.setUpData.minskRegion.push(tmp)
-      }
-    }
-*/
-
-
-
-/*
-    if (data.region == 'minskRegion') {this.setUpData.minskRegion.push (data)
-    console.log (setUpData)}*/
-
-
-
-  })
+})
 
   this.onChanges()
   }
@@ -188,29 +150,68 @@ nights: number;
 
 
 makeTitleSearch (){
+
   console.log (this.searchForm.get('title').value)
-
+  let input = this.searchForm.get('title').value
   this.searchForm.get ('minskRegion').setValue (true)
+//console.log (this.setUpData)
+
+for (var key in this.setUpData) {
+    if (this.setUpData.hasOwnProperty(key)) {
+        this.setUpData[key].forEach((elem , index) => {
+
+        //console.log ((elem.name.toLowerCase().includes(input.toLowerCase()) ))
+        if (elem.name.toLowerCase().includes(input.toLowerCase()) ) {
+             // есть название оставить элемент
+
+             // проверить удаленные
+/*
+             for (var key1 in this.deletedSearh) {
+                 if (this.deletedSearh.hasOwnProperty(key1)) {
+                     this.deletedSearh[key1].forEach((elem1 , index1) => {
+
+                     //console.log ((elem.name.toLowerCase().includes(input.toLowerCase()) ))
+                     if (elem1.name.toLowerCase().includes(input.toLowerCase()) ) {
+                          // есть название вернуть в отображение
+
+                   } else {
+                     let deletedObj1 = this.deletedSearh[key1].splice(index1 , 1)
+                     this.setUpData[key1].push(deletedObj1[0])
 
 
 
 
-  /*
-  for (let i = 0; i < setUpData.length; i++) {
+                   }
 
-    if (setUpData[i].name.includes(this.searchForm.get('title').value) == true ){
-
-      // есть в названии
-    } else {
-
-    this.deletedBySearh =
-    this.setUpData.splice ()
-
-    }
-
-
-  }
+                     });
+                 }
+             }
 */
+
+      } else {
+          console.log (index)
+
+          // удалить элемент
+      //let deletedObj = this.setUpData[key].splice(index , 1)
+      //this.deletedSearh[key].push(deletedObj[0])
+
+
+
+
+      //проверить удаленные на соответствие фразе и засунуть обратно элемент в отображение
+
+
+      }
+
+        });
+    }
+}
+
+
+console.log (this.setUpData)
+console.log (this.deletedSearh)
+
+
 
 
 }
