@@ -52,20 +52,20 @@ nights: number;
 
     this.searchForm = fb.group({
       title: ['', Validators.required],
-      type: '',
+    //  type: '',
 
       minskRegion: false,
-      minskRegionLi: fb.array ([{name:''}]),
-      vitebskRegion : '',
-      vitebskRegionLi: fb.array ([]),
-      gomelRegion: '',
-      gomelRegionLi: fb.array ([]),
-      grodnoRegion: '',
-      grodnoRegionLi: fb.array ([]),
-      mogilevRegion:'',
-      mogilevRegionLi: fb.array ([]),
-      brestRegion:'',
-      brestRegionLi:fb.array ([]),
+    //  minskRegionLi: fb.array ([{name:''}]),
+      vitebskRegion : false,
+    //  vitebskRegionLi: fb.array ([]),
+      gomelRegion: false,
+    //  gomelRegionLi: fb.array ([]),
+      grodnoRegion: false,
+    //  grodnoRegionLi: fb.array ([]),
+      mogilevRegion:false,
+    //  mogilevRegionLi: fb.array ([]),
+      brestRegion: false,
+    //  brestRegionLi:fb.array ([]),
 
 
 
@@ -95,10 +95,10 @@ nights: number;
 
     // запрос на заполнение объектов по областямы
     this.search.getSetUpData().subscribe ((data)=>{
-    //console.log (data.length)
+    console.log (data)
 
 
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < Object.keys(data).length; i++) {
 
 
         if (data[i].region == 'Брестская область'){
@@ -148,6 +148,15 @@ nights: number;
 
 }
 
+
+starsClass(event) {
+  //event.preventDefault()
+  console.log (event.target.checked)
+    console.log (event.target.value)
+  /*if (event.target == 'input') {
+    console.log ('input')
+  }*/
+}
 
 makeTitleSearch (){
 
@@ -303,14 +312,16 @@ for (var i = 0; i<childrenCount;i++) {
 
   startSearch (){
     let serchData = this.searchForm.value
-    this.search.SearchFindBookingsObjsAtDb(serchData).subscribe ((data)=> {
+    let selectedObjs = this.selectedObjs
 
-        this.forDisplay = data.data
-        console.log (data.data)
+    this.search.SearchFindBookingsObjsAtDb(serchData, selectedObjs).subscribe ((data)=> {
+
+        //this.forDisplay = data.data
+        console.log (data)
 
         this.showBokings = true
 
-
+/*
         // dates days nights
         let dateCheckIn =  this.searchForm.get('dateCheckIn').value
         let dateCheckOut =  this.searchForm.get('dateCheckOut').value
@@ -320,7 +331,7 @@ for (var i = 0; i<childrenCount;i++) {
 
         this.nights = (outD - inD) / oneDay
         this.days = this.nights+1
-
+*/
 
      })
 

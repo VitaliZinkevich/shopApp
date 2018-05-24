@@ -246,7 +246,7 @@ export const adressOption = [ {country: 'Беларусь',
 
 export const accommodation = ['1','1+1','1+2','2','2+1','2+2','2+3','3']
 
-export const TYPES = ['Санаторий', 'Оздаровительный центр'];
+export const TYPES = ['Санаторий', 'Оздаровительный центр', "ДРОЦ"];
 
 export const objFeatures = ['Бассейн', 'Озеро', 'Баня','Прокат']
 export const objMedFeatures = ['Кожные', 'Кордеолог', 'Костные','Еще другие']

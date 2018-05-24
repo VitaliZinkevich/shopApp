@@ -35,9 +35,12 @@ export class SearchService {
        })
      };
 
-  SearchFindBookingsObjsAtDb (serchData) {
-
-    return this.http.post<bringSearchDataStatus> ('/api/search', {serchData}, this.httpOptions)
+  SearchFindBookingsObjsAtDb (serchData, selectedObjs) {
+/*
+    console.log (serchData)
+    console.log (selectedObjs)
+*/
+    return this.http.post<bringSearchDataStatus> ('/api/search', {serchData, selectedObjs}, this.httpOptions)
 
   }
 
