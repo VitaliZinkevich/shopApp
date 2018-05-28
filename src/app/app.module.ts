@@ -13,6 +13,7 @@ import { SearchComponent } from './search/search.component';
 import { CommisionPipe } from './commision.pipe';
 import { FilledFormDirective } from './filled-form.directive';
 import { BookObjectComponent } from './book-object/book-object.component';
+import { Search2Component } from './search2/search2.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BookObjectComponent } from './book-object/book-object.component';
     SearchComponent,
     CommisionPipe,
     FilledFormDirective,
-    BookObjectComponent
+    BookObjectComponent,
+    Search2Component
   ],
   imports: [
     BrowserModule,
